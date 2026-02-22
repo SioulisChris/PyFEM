@@ -4,7 +4,7 @@
 from pyfem.util.BaseModule import BaseModule
 
 from numpy import zeros, array
-from pyfem.fem.Assembly import assembleMass, assembleTangentStiffness
+from pyfem.fem.Assembly import assembleMassMatrix, assembleTangentStiffness
 
 class ModalSolver ( BaseModule ):
 
@@ -23,7 +23,7 @@ class ModalSolver ( BaseModule ):
     globdat.cycle = 1
     
     K,fint  = assembleTangentStiffness( props, globdat )
-    M,Mlump = assembleMass( props , globdat )
+    M,Mlump = assembleMassMatrix( props , globdat )
           
     globdat.vecs , globdat.vals = globdat.dofs.eigensolve( K, M )
 
