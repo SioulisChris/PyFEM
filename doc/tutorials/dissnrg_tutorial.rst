@@ -20,6 +20,6 @@ These input files can be executed by typing::
 
 The result load displacement curve will look as follows:
 
-.. figure:: img/delam_buckling200.png
+.. figure:: ../img/delam_buckling200.png
 
  
