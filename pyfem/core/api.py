@@ -64,14 +64,14 @@ class PyFEMAPI:
         """Perform a single solver step (by default) followed by output processing ."""
 
         for iCyc in range(nCyc):
-            if not self.is_active:
+            if not self.isActive:
                 return
             self.solver.run(self.props, self.globdat)
             self.output.run(self.props, self.globdat)
 
     def runAll(self) -> None:
         """Run steps until the analysis completes."""
-        while self.is_active:
+        while self.isActive:
             self.step()
 
     def getResults(self) -> Any:
@@ -81,7 +81,7 @@ class PyFEMAPI:
         `self.globdat` for detailed state if needed.
         """
         return {
-            'active': self.is_active,
+            'active': self.isActive,
             'globdat': self.globdat,
             'props': self.props,
         }
@@ -102,6 +102,6 @@ def run(props: Union[str, Path, Tuple[Any, Any]]) -> Any:
     the results dictionary.
     """
     api = PyFEMAPI(props)
-    api.run_all()
-    return api.get_results()
+    api.runAll()
+    return api.getResults()
 
